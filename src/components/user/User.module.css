@@ -1,0 +1,11 @@
+.classUser{
+    display: flex;
+    background: silver;
+    margin-bottom: 3px;
+    font-size: medium;
+}
+
+.classPostCard {
+    background: cadetblue;
+    border: solid 1px;
+}

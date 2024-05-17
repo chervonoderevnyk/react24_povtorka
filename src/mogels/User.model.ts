@@ -1,11 +1,12 @@
-import {HairModel} from "./Hair.Model";
+import {HairModel} from "./Hair.model";
+import {CompanyModel} from "./Company.model";
 
 export interface IUserProps {
     id: number,
     firstName: string,
     lastName: string,
     maidenName?: string,
-    age: number,
+    age?: number,
     gender?: string,
     email: string,
     phone?: number,
@@ -39,21 +40,7 @@ export interface IUserProps {
         currency?: string,
         iban?: string
     },
-    company?: {
-        address?: {
-            address?: string,
-            city?: string,
-            coordinates?: {
-                lat?: number,
-                lng?: number
-            },
-            postalCode?: number,
-            state?: string
-        },
-        department?: string,
-        name?: string,
-        title?: string
-    },
+    company?: CompanyModel,
     ein?: string,
     ssn?: string,
     userAgent?: string

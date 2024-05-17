@@ -1,14 +1,17 @@
 import {FC, useEffect, useState} from "react";
 
 import User from "../user/User";
-import {IUserProps} from "../../mogels/UserModel";
-import {getAllUsers} from "../../services/users.api.service";
+import {IUserProps} from "../../mogels/User.model";
+import {requests} from "../../services/Dummyjson.api.service";
 
-const Users:FC = () => {
+type IPropsType = {lift?:(userId:number)=> void} & {liftCart?:(userId:number)=> void};
+
+const Users:FC<IPropsType> = ({lift,liftCart}) => {
+
     const [users, setUsers] = useState<IUserProps[]>([]);
 
     useEffect(() => {
-        getAllUsers().then(value => setUsers(value.data.users));
+        requests.users.getAllUsers().then(value => setUsers(value.data.users));
     }, []);
 
     console.log('.');
@@ -20,12 +23,12 @@ const Users:FC = () => {
                        id={value.id}
                        firstName={value.firstName}
                        lastName={value.lastName}
-                       maidenName={value.maidenName}
-                       age={value.age}
-                       gender={value.gender}
                        email={value.email}
                        phone={value.phone}
                        hair={value.hair}
+                      company={value.company}
+                      lift={lift}
+                      liftCart={liftCart}
                 />))}
         </div>
     );
