@@ -11,6 +11,9 @@ import {IPostModel} from "./mogels/Post.model";
 import Carts from "./components/carts/Carts";
 import {CartsModel} from "./mogels/Carts.model";
 import {ApishkaLift} from "./components/stateLifting/ApishkaLift";
+import {Memomizing} from "./components/memomization/Memomizing";
+import OriginalComponent1 from "./components/memomization/OriginalComponent1";
+import OriginalComponent2 from "./components/memomization/OriginalComponent2";
 
 const App = () => {
 
@@ -50,10 +53,12 @@ const App = () => {
         {/*    <Users lift={lift} liftCart={liftCart}/>*/}
         {/*    <Posts posts={posts}/>*/}
         {/*    <Carts carts={carts}/>*/}
-
         {/*</div>*/}
 
-        <ApishkaLift/>
+        {/*<ApishkaLift/>*/}
+        {/*<Memomizing/>*/}
+        <OriginalComponent1/>
+        <OriginalComponent2/>
     </>
     );
 };
