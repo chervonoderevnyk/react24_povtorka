@@ -3,20 +3,32 @@ import {IPostModel} from "../../mogels/Post.model";
 
 // interface IProps {
 //     post: IPostModel;
+//     // chooseComment: (id: number)=> void;
 // }
-//
-// type IPropsType = IProps & {children?:React.ReactNode};
 
-const Post:FC<IPostModel> = ({
+type IPropsType = IPostModel & {liftComments?: (postId:number)=> void};
+
+const Post:FC<IPropsType> = ({
                                  id,
-                                 title
+                                 title,
+                                 liftComments
                              }) => {
+
+    function onClickComments() {
+        if (liftComments) {
+            liftComments(id);
+        }
+    }
+
     return (
         <div>
 
             <div>{id},
                 {title}
-            <hr/>
+                <div>
+                    <button onClick={onClickComments}>chooseComment</button>
+                </div>
+                <hr/>
             </div>
         </div>
     );

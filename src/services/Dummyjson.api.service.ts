@@ -36,7 +36,14 @@ let requests = {
           getCartOfUser: (id: number) => {
               return axiosInstance.get('/carts/user/' + id);
           }
+    },
+
+    commentsPostId: {
+          getCommentsOfPost: (id: number) => {
+              return axiosInstance.get('/comments/post/' + id);
+          }
     }
+
 }
 
 export {requests}

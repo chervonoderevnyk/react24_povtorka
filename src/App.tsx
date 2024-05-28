@@ -10,13 +10,13 @@ import {requests} from "./services/Dummyjson.api.service";
 import {IPostModel} from "./mogels/Post.model";
 import Carts from "./components/carts/Carts";
 import {CartsModel} from "./mogels/Carts.model";
+import {ApishkaLift} from "./components/stateLifting/ApishkaLift";
 
 const App = () => {
 
     const [posts, setPosts] = useState<IPostModel[]>([]);
 
     const lift = (userId:number) => {
-        // requests.postsUserId.getAllPostsOfUser(userId).then(({data}) => {
         requests.postsUserId.getAllPostsOfUser(userId).then((value) => {
             setPosts(value.data.posts);
         })
@@ -28,7 +28,16 @@ const App = () => {
         requests.cartUserId.getCartOfUser(useId).then((value) => {
             setCarts(value.data.carts)
         })
-    }
+    };
+
+    // const [comments, setComments] = useState<CommentModel[]>([]);
+    //
+    // const liftComments = (postId: number) =>{
+    //     requests.commentsPostId.getCommentsOfPost(postId).then((value)=>{
+    //         setComments(value.data.comments)
+    //     })
+    // };
+
 
     return (
     <>
@@ -36,11 +45,15 @@ const App = () => {
         {/*<Characters/>*/}
         {/*<Recipes/>*/}
         {/*<Products/>*/}
-        <div className="App">
-            <Users lift={lift} liftCart={liftCart}/>
-            <Posts posts={posts}/>
-            <Carts carts={carts}/>
-        </div>
+
+        {/*<div className="App">*/}
+        {/*    <Users lift={lift} liftCart={liftCart}/>*/}
+        {/*    <Posts posts={posts}/>*/}
+        {/*    <Carts carts={carts}/>*/}
+
+        {/*</div>*/}
+
+        <ApishkaLift/>
     </>
     );
 };
