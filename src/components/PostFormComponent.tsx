@@ -1,36 +1,37 @@
 import {useForm} from "react-hook-form";
-import {IPostModel} from "../models/IPostModel";
 import {FC} from "react";
+
+import {IPostModel} from "../models/IPostModel";
+import {requests} from "../services/DummyJsonServise";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {PostValidator} from "../validators/Post.validator";
 
 const PostFormComponent: FC = () => {
 
 let {
       register,
-      handleSubmit
-    } = useForm<IPostModel>()
+      handleSubmit,
+    formState:{errors}
+    } = useForm<IPostModel>({mode:"all", resolver: joiResolver(PostValidator)});
 
     const AddPost = (addPost:IPostModel) =>{
         // console.log(addPost)
 
-        fetch('https://dummyjson.com/posts/add', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                title: addPost.title,
-                userId: addPost.userId,
+        requests.post.addPost(addPost)
+            .then(response => {
+                console.log("Response:", response.data)
             })
-        })
-            .then(res => res.json())
-        .then(data=> {
-            console.log("Responce:", data)});
 };
 
     return (
         <div>
             <form onSubmit={handleSubmit(AddPost)}>
                 <input type={'text'} {...register("title")} placeholder={"title"}/>
+                {errors.title && <span>{errors.title.message}</span>}
                 <br/>
+
                 <input type={"number"} {...register("userId")} placeholder={"user Id"}/>
+                {errors.userId && <span>{errors.userId.message}</span>}
                 <br/>
                 <button>Add post</button>
 
