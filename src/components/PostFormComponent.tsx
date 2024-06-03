@@ -11,7 +11,7 @@ const PostFormComponent: FC = () => {
 let {
       register,
       handleSubmit,
-    formState:{errors}
+    formState:{errors, isValid}
     } = useForm<IPostModel>({mode:"all", resolver: joiResolver(PostValidator)});
 
     const AddPost = (addPost:IPostModel) =>{
@@ -33,7 +33,7 @@ let {
                 <input type={"number"} {...register("userId")} placeholder={"user Id"}/>
                 {errors.userId && <span>{errors.userId.message}</span>}
                 <br/>
-                <button>Add post</button>
+                <button disabled={!isValid}>Add post</button>
 
             </form>
         </div>
