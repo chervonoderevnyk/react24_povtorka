@@ -5,10 +5,16 @@ interface IProps extends PropsWithChildren {
 user: IUser
 }
 
-const User: FC<IProps> = () => {
+const User: FC<IProps> = ({user}) => {
+
+    const {id, lastName,age, email} =user;
+
     return (
         <div>
-            User
+            <div>id: {id}</div>
+            <div>lastName: {lastName}</div>
+            <div>age: {age}</div>
+            <div>email: {email}</div>
         </div>
     );
 };
