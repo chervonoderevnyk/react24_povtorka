@@ -8,13 +8,18 @@ const Users = () => {
     const [users, setUsers] = useState<IUser[]>([])
 
     useEffect(() => {
-        userService.getAll().then((value) => setUsers(value.data))
+        userService.getAll().then(value => setUsers(value.data))
     }, []);
 
     return (
         <div>
             {users.map((user:IUser) => <User key={user.id}
-                                             user={user}/>)}
+                                             id={user.id}
+                                             lastname={user.lastName}
+                                             age={user.age}
+                                             email={user.email}
+                                             // user={user}
+            />)}
         </div>
     );
 };
