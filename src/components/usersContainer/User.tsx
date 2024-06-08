@@ -6,11 +6,11 @@ user: IUser
 }
 
 const User: FC<IProps> = (
-    // {user}
-    {id, lastName,age, email}
+    {user}
+    // {id, lastName, age, email}
 ) => {
 
-    // const {id, lastName,age, email} = user;
+    const {id, lastName,age, email} = user;
 
     return (
         <div>
