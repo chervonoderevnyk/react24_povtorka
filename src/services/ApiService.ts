@@ -1,8 +1,20 @@
-import axios from "axios";
-import {baseURL} from "../constants/Urls";
+import axios, {AxiosResponse} from "axios";
+import {IUserModel} from "../models/IUserModel";
 
-const apiService = axios.create({baseURL});
+ let axiosInstans = axios.create({
+    baseURL: "https://dummyjson.com",
+    headers: {}
+});
+
+ const userApiService = {
+     getAllUsers: ():Promise<AxiosResponse<IUserModel[]>> => {
+         return axiosInstans.get("/users");
+     },
+     getUserById: (userId: number):Promise<AxiosResponse<IUserModel>> => {
+         return axiosInstans.get(`/users/${userId}`);
+     }
+ }
 
 export {
-    apiService
+     userApiService
 }
