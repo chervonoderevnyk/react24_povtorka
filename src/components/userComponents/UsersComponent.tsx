@@ -11,7 +11,7 @@ const UsersComponent:FC = () => {
 
     return (
         <div>
-            {users.map(user => <div key={user.id}>{user.id} -{user.lastName} -{user.age}</div>)}
+            {users.map(user => <div key={user.id}>user: {user}</div>)}
         </div>
     );
 };

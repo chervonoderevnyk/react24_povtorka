@@ -1,7 +1,11 @@
-import {FC} from "react";
+import {FC, PropsWithChildren} from "react";
 import {IUserModel} from "../../models/IUserModel";
 
-const User :FC<IUserModel>= ({user}) => {
+interface IProps extends PropsWithChildren {
+    user: IUserModel
+}
+
+const User :FC<IProps>= ({user}) => {
 
     const {id, lastName, age} = user;
 
