@@ -2,12 +2,11 @@ import {FC, PropsWithChildren} from "react";
 import {IUser} from "../../interfaces/UserInterface";
 
 interface IProps extends PropsWithChildren {
-user: IUser
+    user: IUser
 }
 
 const User: FC<IProps> = (
     {user}
-    // {id, lastName, age, email}
 ) => {
 
     const {id, lastName,age, email} = user;
@@ -16,8 +15,7 @@ const User: FC<IProps> = (
         <div>
             <div>id: {id}</div>
             <div>lastName: {lastName}</div>
-            <div>age: {age}</div>
-            <div>email: {email}</div>
+            <hr/>
         </div>
     );
 };
