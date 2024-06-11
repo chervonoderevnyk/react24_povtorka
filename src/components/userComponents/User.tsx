@@ -7,13 +7,12 @@ interface IProps extends PropsWithChildren {
 
 const User :FC<IProps>= ({user}) => {
 
-    const {id, lastName, age} = user;
+    const {id, lastName, firstName} = user;
 
     return (
         <div>
-            <div>id: {id}</div>
-            <div>lastName: {lastName}</div>
-            <div>age: {age}</div>
+            <div>{id} {firstName} {lastName}</div>
+            <hr/>
         </div>
     );
 };
