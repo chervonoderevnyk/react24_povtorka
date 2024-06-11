@@ -8,7 +8,7 @@ const UsersComponent:FC = () => {
     const [users, setUsers] = useState<IUserModel[]>([]);
 
     useEffect(() => {
-        userApiService.getAllUsers().then((value) => setUsers(value.data.users))
+        userApiService.getAllUsers().then(value => setUsers(value.data.users))
     }, []);
 
     return (
