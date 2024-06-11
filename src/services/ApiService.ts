@@ -1,9 +1,10 @@
 import axios, {AxiosResponse} from "axios";
+
 import {IUserModel} from "../models/IUserModel";
 
  let axiosInstans = axios.create({
     baseURL: "https://dummyjson.com",
-    headers: {}
+     headers: {"Content-Type": "application/json: charset=UTF-8"}
 });
 
  const userApiService = {

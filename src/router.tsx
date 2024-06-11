@@ -3,7 +3,6 @@ import {MainLayout} from "./layout/MainLayout";
 import {HomePage} from "./pages/HomePage";
 import {UsersComponent} from "./components/userComponents/UsersComponent";
 
-
 const router = createBrowserRouter([
     {path:'/',element: <MainLayout/>,
     children: [
