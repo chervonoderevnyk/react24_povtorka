@@ -14,7 +14,11 @@ const UsersComponent:FC = () => {
     return (
         <div>
             {users.map((user:IUserModel) => (
-                <User key={user.id} user={user}/>))}
+                <User key={user.id}
+                      id={user.id}
+                      lastName={user.lastName}
+                      firstName={user.firstName}
+                />))}
         </div>
     );
 };
