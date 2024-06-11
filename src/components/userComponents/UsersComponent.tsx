@@ -1,19 +1,26 @@
 import {FC, useEffect, useState} from "react";
+
 import {IUserModel} from "../../models/IUserModel";
 import {userApiService} from "../../services/ApiService";
 import {User} from "./User";
-import {AxiosResponse} from "axios";
 
 const UsersComponent:FC = () => {
+
     const [users, setUsers] = useState<IUserModel[]>([]);
 
     useEffect(() => {
-        userApiService.getAllUsers().then(value => setUsers(value.data.users))
+        userApiService.getAllUsers()
+            .then((value) => {setUsers(value.data.users);
+        });
     }, []);
+
+    if (users.length === 0) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
-            {users.map((user:IUserModel) => (
+            {users.map((user) => (
                 <User key={user.id}
                       id={user.id}
                       lastName={user.lastName}
@@ -24,6 +31,7 @@ const UsersComponent:FC = () => {
 };
 
 export {UsersComponent};
+
 // {users: Array(30), total: 208, skip: 0, limit: 30}
 // limit: 30
 // skip: 0
