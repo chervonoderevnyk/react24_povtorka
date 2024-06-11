@@ -17,24 +17,18 @@ const User: FC<IPropsType> = ({
     const [showCompany, setShowCompany] = useState(false);
 
     const onclickHair = () => {
-        setShowHair(!showHair);
-    };
+        setShowHair(!showHair);};
 
     const onClickCompany = () => {
-        setShowCompany(!showCompany);
-    };
+        setShowCompany(!showCompany);};
 
     function onClickHandler() {
         if (lift) {
-            lift(id);
-        }
-    }
+            lift(id);}}
 
     function onClickCart() {
         if (liftCart) {
-            liftCart(id);
-        }
-    }
+            liftCart(id);}}
 
     return (
         <div className={styles.classUser}>
