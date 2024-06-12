@@ -1,14 +1,21 @@
-import {FC, PropsWithChildren} from "react";
+import React, {FC} from "react";
 import {IUserModel} from "../../models/IUserModel";
+import {Link} from "react-router-dom";
 
-const User :FC<IUserModel>= ({id,lastName, firstName}) => {
+interface IProps {
+    user: IUserModel;
+}
+
+const User :FC<IProps>= ({user}) => {
 
     return (
-        <div>
-            <div>{id}. {firstName} {lastName}</div>
-            <hr/>
-        </div>
+        // <div>
+            <div>
+                <Link to={user.id.toString()}>{user.id}. {user.firstName} {user.lastName}</Link>
+                </div>
+            // <hr/>
+        /*</div>*/
     );
 };
 
-export {User};
+export default User;

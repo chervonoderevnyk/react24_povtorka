@@ -1,24 +1,23 @@
-import {FC, useEffect, useState} from "react";
+import React,{FC, useEffect, useState} from "react";
 
 import {IUserModel} from "../../models/IUserModel";
 import {userApiService} from "../../services/ApiService";
-import {User} from "./User";
+import User from "./User";
+import user from "./User";
 
-const UsersComponent:FC = () => {
+interface IProps{
+    users: IUserModel[]
+}
+
+const UsersComponent:FC<IProps> = () => {
 
     const [users, setUsers] = useState<IUserModel[]>([]);
-    const [userById, setUserById] = useState<IUserModel>();
 
     useEffect(() => {
         userApiService.getAllUsers()
-            .then((value) => {setUsers(value.data.users);
-        });
+            .then(value => setUsers(value.data.users));
     }, []);
-
-    useEffect((userId: number) => {
-        userApiService.getUserById(userId)
-            .then((value) => {console.log(value.data)})
-    }, []);
+    
 
     if (users.length === 0) {
         return <div>Loading...</div>;
@@ -26,17 +25,13 @@ const UsersComponent:FC = () => {
 
     return (
         <div>
-            {users.map((user) => (
-                <User key={user.id}
-                      id={user.id}
-                      lastName={user.lastName}
-                      firstName={user.firstName}
-                />))}
+            {users.map(user =>
+            <User key={user.id} user={user}/>)}
         </div>
     );
 };
 
-export {UsersComponent};
+export default UsersComponent;
 
 // {users: Array(30), total: 208, skip: 0, limit: 30}
 // limit: 30

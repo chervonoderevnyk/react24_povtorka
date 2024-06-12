@@ -22,6 +22,10 @@ import {ICommentModel} from "../models/ICommentModel";
  const postApiService = {
      getAllPosts: (): Promise<AxiosResponse<IPostModel[]>> => {
          return axiosInstans.get('/posts')
+     },
+
+     getPostsOfUser: (userId: string): Promise<AxiosResponse<IPostModel[]>> =>{
+         return axiosInstans.get(`/users/${userId}/posts`)
      }
  }
 

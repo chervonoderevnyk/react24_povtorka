@@ -1,13 +1,16 @@
-import {FC} from "react";
+import React, {FC} from "react";
 import {IPostModel} from "../../models/IPostModel";
 
-const Post:FC<IPostModel> = ({id, title}) => {
+interface IProps{
+    post: IPostModel
+}
+
+const Post:FC<IProps> = ({post}) => {
     return (
         <div>
-            <div>{id}. {title}</div>
-            <hr/>
+            {post.id}. {post.title}
         </div>
     );
 };
 
-export {Post};
+export default Post;
