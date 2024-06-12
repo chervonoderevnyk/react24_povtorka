@@ -15,9 +15,9 @@ const UsersComponent:FC = () => {
         });
     }, []);
 
-    useEffect(() => {
+    useEffect((userId: number) => {
         userApiService.getUserById(userId)
-            .then((value) => {console.log(value.data.)})
+            .then((value) => {console.log(value.data)})
     }, []);
 
     if (users.length === 0) {
