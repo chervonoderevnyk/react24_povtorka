@@ -6,6 +6,10 @@ const HeaderComponent = () => {
             <Link to="/">home page</Link>
             <br/>
             <Link to="users">users page</Link>
+            <br/>
+            <Link to="posts">posts page</Link>
+            <br/>
+            <Link to="comments">comments page</Link>
             <hr/>
         </div>
     );

@@ -7,11 +7,17 @@ import {User} from "./User";
 const UsersComponent:FC = () => {
 
     const [users, setUsers] = useState<IUserModel[]>([]);
+    const [userById, setUserById] = useState<IUserModel>();
 
     useEffect(() => {
         userApiService.getAllUsers()
             .then((value) => {setUsers(value.data.users);
         });
+    }, []);
+
+    useEffect(() => {
+        userApiService.getUserById(userId)
+            .then((value) => {console.log(value.data.)})
     }, []);
 
     if (users.length === 0) {

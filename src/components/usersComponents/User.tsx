@@ -5,7 +5,7 @@ const User :FC<IUserModel>= ({id,lastName, firstName}) => {
 
     return (
         <div>
-            <div>{id} {firstName} {lastName}</div>
+            <div>{id}. {firstName} {lastName}</div>
             <hr/>
         </div>
     );
