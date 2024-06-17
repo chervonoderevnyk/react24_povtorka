@@ -5,7 +5,7 @@ import {IPostModel} from "../models/IPostModel";
 import {ICommentModel} from "../models/ICommentModel";
 
  let axiosInstans = axios.create({
-    baseURL: "https://dummyjson.com",
+    baseURL: "https://jsonplaceholder.typicode.com",
      headers: {"Content-Type": "application/json: charset=UTF-8"}
 });
 
@@ -32,6 +32,14 @@ import {ICommentModel} from "../models/ICommentModel";
  const commentApiService ={
      getAllComments: ():Promise<AxiosResponse<ICommentModel[]>> => {
          return axiosInstans.get('/comments')
+     },
+
+     getCommentsOfPost: (postId:string): Promise<AxiosResponse<ICommentModel[]>> =>{
+         return axiosInstans.get(
+             `/posts/${postId}/comments`
+             // `/posts/comments?${postId}`
+             // `/comments?postId=${postId}`
+         )
      }
  }
 

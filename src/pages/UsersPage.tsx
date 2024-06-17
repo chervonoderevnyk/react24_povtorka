@@ -1,5 +1,5 @@
-import UsersComponent from "../components/usersComponents/UsersComponent";
 import {Outlet} from "react-router-dom";
+import UsersComponent from "../components/usersComponents/UsersComponent";
 
 const UsersPage = () => {
     return (

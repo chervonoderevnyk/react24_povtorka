@@ -1,13 +1,20 @@
 import {FC} from "react";
 import {ICommentModel} from "../../models/ICommentModel";
 
-const Comment:FC<ICommentModel> = ({id,body, postId}) => {
+interface IProps{
+    comment: ICommentModel
+}
+
+const Comment:FC<IProps> = ({comment}) => {
+
     return (
         <div>
-            <div>{id}. {body} - postId: {postId}</div>
-            <hr/>
+            <div>{comment.id}.
+                {comment.name} -
+                postId:{comment.postId}
+            </div>
         </div>
     );
 };
 
-export {Comment};
+export default Comment;
