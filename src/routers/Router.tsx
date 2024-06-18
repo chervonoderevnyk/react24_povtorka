@@ -1,4 +1,4 @@
-const Router = () => {
+export const router = () => {
     return (
         <div>
             Router
@@ -6,4 +6,3 @@ const Router = () => {
     );
 };
 
-export {Router};
