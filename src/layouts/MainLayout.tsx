@@ -1,4 +1,4 @@
-const MainLaoute = () => {
+const MainLayout = () => {
     return (
         <div>
             MainLaoute
@@ -6,4 +6,4 @@ const MainLaoute = () => {
     );
 };
 
-export {MainLaoute};
+export {MainLayout};
