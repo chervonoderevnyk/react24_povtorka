@@ -1,11 +1,6 @@
-import {FC} from "react";
+import axios from "axios";
 
-const ApiService:FC = () => {
-    return (
-        <div>
-            ApiService
-        </div>
-    );
-};
+axios.create(
+    baseURL: 'https://jsonplaceholder.typicode.com/',
 
-export {ApiService};
+);
