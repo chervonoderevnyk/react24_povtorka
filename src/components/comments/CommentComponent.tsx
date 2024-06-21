@@ -8,7 +8,7 @@ interface IProps{
 const CommentComponent:FC<IProps>= ({comment}) => {
     return (
         <div>
-            {comment.id}. {comment.name}
+            {comment.id}. {comment.name}- postId:{comment.id}
         </div>
     );
 };

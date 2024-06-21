@@ -15,13 +15,22 @@ const ApiServices= {
         getAllUsers: (): Promise<AxiosResponse<IUserModel[]>> => {
             return axiosInstance.get("/users");
         },
+
+         getPostOfUser: (userId:string): Promise<AxiosResponse<IPostModel[]>> => {
+            return axiosInstance.get(`/users/${userId}/posts`)
+         }
     },
 
     postApiService : {
 
         getAllPosts: (): Promise<AxiosResponse<IPostModel[]>> => {
             return axiosInstance.get("/posts")
-        }
+        },
+
+        getCommentsOfPost: (postId: string): Promise<AxiosResponse<ICommentModel[]>> => {
+            return axiosInstance.get(`/posts/${postId}/comments`)
+        },
+
     },
 
     commentsApiService : {

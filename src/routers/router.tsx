@@ -12,8 +12,17 @@ export const router = createBrowserRouter([
         errorElement: <h2>what are you doing man???</h2>,
         children: [
             {index:true, element: <HomePage/>},
-            {path: '/users', element:<UserPage/>},
-            {path: '/posts', element:<PostPage/>},
+            {path: '/users', element:<UserPage/>,
+                children: [
+                    {path: ':id', element: <PostPage/>}
+                ]
+            },
+            {path: '/posts', element:<PostPage/>,
+                children: [
+                    // {path: ':id', element: <CommentPage/>},
+                    {path: ':postId/comments', element: <CommentPage/>}
+                ]
+            },
             {path: '/comments', element:<CommentPage/>},
         ]
     }

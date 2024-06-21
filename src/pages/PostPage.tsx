@@ -5,6 +5,7 @@ const PostPage = () => {
     return (
         <div>
             <PostsComponent/>
+            <hr/>
             <Outlet/>
         </div>
     );
