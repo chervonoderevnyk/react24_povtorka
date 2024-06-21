@@ -7,12 +7,13 @@ const UsersComponent = () => {
     const [users, setUsers] = useState<IUserModel[]>([])
 
     useEffect(() => {
-        ApiServices.userApiService.getAllUsers(setUsers())
+        ApiServices.userApiService.getAllUsers()
+            .then(value => setUsers(value.data))
     }, []);
 
     return (
         <div>
-            UsersComponent
+            {users.map(user = )}
         </div>
     );
 };
