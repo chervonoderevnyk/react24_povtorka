@@ -1,7 +1,11 @@
+import {UsersComponent} from "../components/users/UsersComponent";
+import {Outlet} from "react-router-dom";
+
 const UserPage = () => {
     return (
         <div>
-            UserPage
+            <UsersComponent/>
+            <Outlet/>
         </div>
     );
 };

@@ -1,7 +1,11 @@
+import {PostsComponent} from "../components/posts/PostsComponent";
+import {Outlet} from "react-router-dom";
+
 const PostPage = () => {
     return (
         <div>
-            PostPage
+            <PostsComponent/>
+            <Outlet/>
         </div>
     );
 };

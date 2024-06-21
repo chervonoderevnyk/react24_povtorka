@@ -13,8 +13,8 @@ export const router = createBrowserRouter([
         children: [
             {index:true, element: <HomePage/>},
             {path: '/users', element:<UserPage/>},
-            {path: 'posts', element:<PostPage/>},
-            {path: 'comments', element:<CommentPage/>},
+            {path: '/posts', element:<PostPage/>},
+            {path: '/comments', element:<CommentPage/>},
         ]
     }
 ])
