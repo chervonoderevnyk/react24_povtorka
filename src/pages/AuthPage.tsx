@@ -1,7 +1,9 @@
+import {FormComponent} from "../components/FormComponent";
+
 const AuthPage = () => {
     return (
         <div>
-            AuthPage
+            <FormComponent/>
         </div>
     );
 };

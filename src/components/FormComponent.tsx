@@ -1,7 +1,10 @@
 const FormComponent = () => {
     return (
         <div>
-            FormComponent
+            <form>
+                <input type={"text"}/>
+                <input type={"text"}/>
+            </form>
         </div>
     );
 };
