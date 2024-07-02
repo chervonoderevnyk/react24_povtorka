@@ -1,4 +1,4 @@
 export interface TokenRefresh{
-    refresh: string,
-    access: string
+    access: string,
+    refresh: string
 }

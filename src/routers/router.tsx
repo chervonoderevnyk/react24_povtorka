@@ -4,11 +4,13 @@ import {AuthPage} from "../pages/AuthPage";
 import {CarsPage} from "../pages/CarsPage";
 
  export const router = createBrowserRouter([
-     {path: '/',
-     element: <MainLayout/>,
-     errorElement: <h2>what are you doing mann?!</h2>,
-     children: [
-         {index: true, element: <AuthPage/>},
-         {path: '/cars', element: <CarsPage/>}
-     ]}
-])
+     {
+         path: '/',
+         element: <MainLayout/>,
+         errorElement: <h1>wtf are you doing maaaaan????</h1>,
+         children: [
+             {index: true, element: <AuthPage/>},
+             {path: 'cars', element: <CarsPage/>}
+         ]
+     },
+ ])
