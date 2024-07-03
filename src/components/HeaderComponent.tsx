@@ -3,10 +3,14 @@ import {Link} from "react-router-dom";
 const HeaderComponent = () => {
     return (
         <div>
-             <Link to={'/'}>auth page</Link>
-            <br/>
-             <Link to={'/cars'}>cars page</Link>
-            <hr/>
+            <ul>
+                <li>
+                    <Link to={'/'}>login page</Link>
+                </li>
+                <li>
+                    <Link to={'/cars'}>cars page</Link>
+                </li>
+            </ul>
         </div>
     );
 };

@@ -1,5 +1,7 @@
 export interface CarWithAuth{
-    brand: string,
-    price: string,
-    year: number
+    id: number;
+    brand: string;
+    price: number;
+    year: number;
+    photo: string;
 }

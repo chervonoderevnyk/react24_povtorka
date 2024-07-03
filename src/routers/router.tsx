@@ -10,7 +10,7 @@ import {CarsPage} from "../pages/CarsPage";
          errorElement: <h1>wtf are you doing maaaaan????</h1>,
          children: [
              {index: true, element: <AuthPage/>},
-             {path: 'cars', element: <CarsPage/>}
+             {path: '/cars', element: <CarsPage/>}
          ]
      },
  ])

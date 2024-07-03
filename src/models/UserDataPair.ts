@@ -1,4 +1,4 @@
-export interface TokenObtainPair{
+export interface UserDataPair {
     username: string,
     password: string
 }
