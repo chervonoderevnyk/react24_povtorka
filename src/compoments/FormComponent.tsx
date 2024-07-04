@@ -15,6 +15,7 @@ const FormComponent = () => {
     const authenticate = async (formData: AuthDataModel) => {
         const isAuth =await authService.authentication(formData)
         setIsAuthState(isAuth)
+        console.log(isAuth);
     };
 
     return (
@@ -28,7 +29,7 @@ const FormComponent = () => {
             <form onSubmit={handleSubmit(authenticate)}>
                 <input type="text" {...register('username')}/>
                 <input type="text"{...register('password')}/>
-                <button>auth me</button>
+                <button>login</button>
             </form>
         </div>
     );

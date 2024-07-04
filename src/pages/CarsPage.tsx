@@ -1,26 +1,46 @@
-import {CarsComponent} from "../compoments/CarsComponent";
 import {useEffect, useState} from "react";
+
+import {CarsComponent} from "../compoments/CarsComponent";
 import {ICarPaginatedModel} from "../models/ICarPaginatedModel";
 import {carService} from "../services/ApiService";
+import {PaginationComponent} from "../compoments/PaginationComponent";
+import {useSearchParams} from "react-router-dom";
 
 const CarsPage = () => {
 
+    const [query, setQuery] = useSearchParams({page: '1'});
 
-    const [cars, setCars] = useState<ICarPaginatedModel[]>([]);
+    const [carsPaginatedObject, setCarsPaginatedObject] = useState<ICarPaginatedModel>({
+        items:[],
+        next:null,
+        prev:null,
+        total_items:0,
+        total_pages:0
+    })
 
     useEffect(() => {
-        carService.getCars().then(value => {
-        // console.log(value?.items)
+        carService.getCars(query.get('page') || '1').then(value => {
+            if (value) {
+                setCarsPaginatedObject(value);
+            }
+        })
+    }, [query]);
 
-                    if (value) {
-                        setCars(value.items);
-                    }
-                })
-            }, []);
+    const changePage= (action: string) => {
+        switch (action) {
+            case 'prev':
+                setQuery({...carsPaginatedObject.prev});
+                break;
+            case 'next':
+                setQuery({...carsPaginatedObject.next});
+                break;
+}
+    };
 
     return (
         <div>
-            <CarsComponent/>
+            <CarsComponent cars={carsPaginatedObject.items}/>
+            <PaginationComponent changePage={changePage} next={carsPaginatedObject.next} prev={carsPaginatedObject.prev}/>
         </div>
     );
 };
