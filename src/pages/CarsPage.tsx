@@ -8,9 +8,10 @@ import {useSearchParams} from "react-router-dom";
 
 const CarsPage = () => {
 
-    const [query, setQuery] = useSearchParams({page: '1'});
+    const [query, setQuery] = useSearchParams();
 
-    const [carsPaginatedObject, setCarsPaginatedObject] = useState<ICarPaginatedModel>({
+    const [carsPaginatedObject, setCarsPaginatedObject] =
+        useState<ICarPaginatedModel>({
         items:[],
         next:null,
         prev:null,
@@ -26,21 +27,10 @@ const CarsPage = () => {
         })
     }, [query]);
 
-    const changePage= (action: string) => {
-        switch (action) {
-            case 'prev':
-                setQuery({...carsPaginatedObject.prev});
-                break;
-            case 'next':
-                setQuery({...carsPaginatedObject.next});
-                break;
-}
-    };
-
     return (
         <div>
             <CarsComponent cars={carsPaginatedObject.items}/>
-            <PaginationComponent changePage={changePage} next={carsPaginatedObject.next} prev={carsPaginatedObject.prev}/>
+            <PaginationComponent next={carsPaginatedObject.next} prev={carsPaginatedObject.prev}/>
         </div>
     );
 };

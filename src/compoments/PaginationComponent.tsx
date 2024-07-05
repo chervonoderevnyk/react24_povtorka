@@ -1,13 +1,28 @@
 import {FC} from "react";
 import {IPaginatedPage} from "../models/IPaginatedPage";
+import {useSearchParams} from "react-router-dom";
 
 interface IProps {
-    changePage:(action:string)=>void;
     next: IPaginatedPage | null;
     prev: IPaginatedPage | null;
 }
 
-const PaginationComponent:FC<IProps> = ({changePage, prev, next}) => {
+const PaginationComponent:FC<IProps> = ({prev, next}) => {
+
+    const [query, setQuery] = useSearchParams({page: '1'});
+
+
+    const changePage= (action: string) => {
+        switch (action) {
+            case 'prev':
+                setQuery({...prev});
+                break;
+            case 'next':
+                setQuery({...next});
+                break;
+        }
+    };
+
     return (
         <div>
             <button onClick={()=> {
