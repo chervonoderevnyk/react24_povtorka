@@ -1,5 +1,5 @@
 import {useForm} from "react-hook-form";
-import {UserDataPair} from "../models/UserDataPair";
+import {UserDataPairModel} from "../models/UserDataPairModel";
 import {authService} from "../services/ApiService";
 import {useState} from "react";
 
@@ -7,11 +7,11 @@ const FormComponent = () => {
     const {
         handleSubmit,
         register
-    } = useForm<UserDataPair>({defaultValues: {username: 'userChI', password: "Pa$$word22"}});
+    } = useForm<UserDataPairModel>({defaultValues: {username: 'userChI', password: "Pa$$word22"}});
 
     const [isAuthState , setIsAuthState ] = useState<boolean>(false)
 
-    const authenticate = async (formData: UserDataPair) => {
+    const authenticate = async (formData: UserDataPairModel) => {
         const isAuth =await authService.authentication(formData)
         setIsAuthState(isAuth)
     };

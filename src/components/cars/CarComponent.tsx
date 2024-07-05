@@ -1,8 +1,8 @@
 import {FC} from "react";
-import {CarWithAuth} from "../../models/CarWithAuth";
+import {CarWithAuthModel} from "../../models/CarWithAuthModel";
 
 interface IProps {
-    car: CarWithAuth
+    car: CarWithAuthModel
 }
 
 const CarComponent:FC<IProps> = ({car}) => {

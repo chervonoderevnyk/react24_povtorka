@@ -1,4 +1,4 @@
-export interface TokenPair {
+export interface TokenPairModel {
     access: string,
     refresh: string
 }
