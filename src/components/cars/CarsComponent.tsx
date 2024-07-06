@@ -7,8 +7,6 @@ import {CarComponent} from "./CarComponent";
 import {PaginationComponent} from "../PaginationComponent";
 import {AxiosError} from "axios";
 
-;
-
 const CarsComponent = () => {
 
     const navigate = useNavigate();
@@ -30,6 +28,7 @@ const CarsComponent = () => {
              if (response) {
                  setUserCars(response);
              }
+
          } catch (e) {
              const axiosError= e as AxiosError
              if (axiosError && axiosError?.response?.status === 401) {
