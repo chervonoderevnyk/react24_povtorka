@@ -1,17 +1,18 @@
 import {useEffect, useState} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
-import {carService} from "../../services/ApiService";
+import {authService, carService} from "../../services/ApiService";
 import {CarPaginatedModel} from "../../models/CarPaginatedModel";
 import {CarComponent} from "./CarComponent";
 import {PaginationComponent} from "../PaginationComponent";
+import {AxiosError} from "axios";
 
 ;
 
 const CarsComponent = () => {
 
+    const navigate = useNavigate();
     const [query, setQuery] = useSearchParams();
-
     const [userCars, setUserCars] = useState<CarPaginatedModel>({
         total_items: 0,
         total_pages: 0,
@@ -21,13 +22,32 @@ const CarsComponent = () => {
     })
 
     useEffect(() => {
-        carService.getCars(query.get('page') || '1').then(value => {
-            if (value) {
-                setUserCars(value)
-            }
-        })
-    }, [query]);
 
+     const getCarsData= async ()=>{
+
+         try {
+             const response =await carService.getCars(query.get('page') || '1');
+             if (response) {
+                 setUserCars(response);
+             }
+         } catch (e) {
+             const axiosError= e as AxiosError
+             if (axiosError && axiosError?.response?.status === 401) {
+                 try {
+                     await authService.refresh();
+                 } catch (e) {
+                     return navigate('/');
+                 }
+
+                 const response = await carService.getCars(query.get('page') || '1');
+                 if (response) {
+                     setUserCars(response)
+                 }
+             }
+         }
+     }
+        getCarsData();
+    },[query])
 
     return (
         <div>
