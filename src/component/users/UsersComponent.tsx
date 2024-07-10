@@ -1,9 +1,9 @@
-import {useContextProvider} from "../../context/ContextProvider";
 import {UserComponent} from "./UserComponent";
+import {useStore} from "../../context/Store";
 
 const UsersComponent = () => {
 
-    const {userStore:{allUsers}} = useContextProvider();
+    const {userStore:{allUsers}} = useStore();
 
     return (
         <div>
